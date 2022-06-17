@@ -1,26 +1,24 @@
 import React from 'react';
 import { Joke } from './components/Joke1';
 import './index.css'
+import { jokesData } from './JokesArray';
+
+
 
 export const App = function() {
+    // using an array and the .map() method to render repetitive JSX
+    const setupAndPunchlineJSX = jokesData.map(function(object) {
+        return (
+            <Joke 
+                setup={object.setup}
+                punchline={object.punchline}
+            />
+        )
+    })
+
     return (
         <div>
-            <Joke 
-                setup="I got my daughter a fridge for her birthday."
-                punchline="I can't wait to see her face light up when she opens it."
-            />
-            <Joke 
-                setup="How did the hacker escape the police?"
-                punchline="He just ransomware!"
-            />
-            <Joke 
-                setup="Why don't pirates travel on mountain roads?"
-                punchline="Scurvy."
-            />
-            <Joke 
-                setup="Why do bees stay in the hive in the winter?"
-                punchline="Swarm."
-            />
+           {setupAndPunchlineJSX}
         </div>
     )
 }
